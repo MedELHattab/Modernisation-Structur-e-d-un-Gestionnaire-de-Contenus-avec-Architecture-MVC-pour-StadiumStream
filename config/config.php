@@ -1,4 +1,5 @@
 <?php
+namespace database;
 class Connection
 {
     private  $con;

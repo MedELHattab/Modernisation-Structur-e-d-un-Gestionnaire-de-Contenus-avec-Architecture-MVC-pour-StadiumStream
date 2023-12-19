@@ -2,7 +2,9 @@
     "name": "youcode/modernisation-structur-e-d-un-gestionnaire-de-contenus-avec-architecture-mvc-pour-stadium-stream",
     "autoload": {
         "psr-4": {
-            "namespace\\": "class"
+            "database\\": "config",
+            "Models\\":"models",
+            "MVC\\":"controller"
         }
     },
     "authors": [
