@@ -1,5 +1,7 @@
 <?php
-
+namespace Crud;
+use PDO;
+use database\Connection; 
 /**
  * Class TableORM
  * 
@@ -24,8 +26,8 @@ class Crud
      */
     public function __construct($table)
     {
-        $db = new Database();
-        $this->conn = $db->getConnection();
+        $db = new Connection();
+        $this->conn = $db->getCon();
         $this->table = $table; // Set the $table property
     }
 
