@@ -2,23 +2,17 @@
 
 namespace MVC;
 
-class Router {
-    protected $routes = [];
 
-    public function addRoute($route, $controller, $action) {
-        $this->routes[$route] = ['controller' => $controller, 'action' => $action];
-    }
+$router = new Router();
 
-    public function dispatch($uri) {
-        if (array_key_exists($uri, $this->routes)) {
-            $controller = $this->routes[$uri]['controller'];
-            $action = $this->routes[$uri]['action'];
 
-            $controller = new $controller();
-            $controller->$action();
-        } else {
-            throw new \Exception("No route found for URI: $uri");
-        }
-    }
-}
+$router->addRoute('/', 'app\Controllers\HomeController', 'index');
+$router->addRoute('/team', 'app\Controllers\TeamController', 'index');
+$router->addRoute('/team/create', 'app\Controllers\TeamController', 'create');
+$router->addRoute('/team/edit/(\d+)', 'app\Controllers\TeamController', 'edit'); // Example with a parameter
+$router->addRoute('/team/delete/(\d+)', 'app\Controllers\TeamController', 'delete'); // Example with a parameter
+
+// Dispatch the request based on the URI
+$uri = $_SERVER['REQUEST_URI'];
+$router->dispatch($uri);
     

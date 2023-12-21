@@ -2,28 +2,13 @@
 namespace Crud;
 use PDO;
 use database\Connection; 
-/**
- * Class TableORM
- * 
- * Represents a basic Object-Relational Mapping (ORM) for interacting with a database table.
- */
-class Crud
-{
-    /**
-     * @var PDO The database connection.
-     */
-    private $conn;
 
-    /**
-     * @var string The name of the database table.
-     */
+class Crud extends Connection
+{
+
     private $table;
 
-    /**
-     * TableORM constructor.
-     *
-     * @param string $table The name of the database table.
-     */
+ 
     public function __construct($table)
     {
         $db = new Connection();
@@ -31,15 +16,7 @@ class Crud
         $this->table = $table; // Set the $table property
     }
 
-    // public function createUser($username, $email, $password) {
-    //     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
-    //     $sql = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
-    //     $stmt = $this->conn->prepare($sql);
-    //     $stmt->execute([$username, $email, $hashedPassword]);
-
-    //     return $stmt->rowCount() > 0;
-    // }
+ 
 
 
     /**
@@ -56,7 +33,7 @@ class Crud
 
         $sql = "INSERT INTO $this->table($columns) VALUES($values)";
 
-        $stmt = $this->conn->prepare($sql);
+        $stmt = $this->con->prepare($sql);
 
         $types = str_repeat('s', count($data));
         $params = array_values($data);
@@ -84,7 +61,7 @@ class Crud
 
         $sql = "UPDATE $this->table SET " . implode(',', $args) . " WHERE id = ?";
 
-        $stmt = $this->conn->prepare($sql);
+        $stmt = $this->con->prepare($sql);
 
         $types = str_repeat('s', count($data) + 1);
         $params = array_values($data);
@@ -106,7 +83,7 @@ class Crud
     {
         $sql = "DELETE FROM $this->table WHERE id = ?";
 
-        $stmt = $this->conn->prepare($sql);
+        $stmt = $this->con->prepare($sql);
         $stmt->execute([$id]);
 
         return $stmt->rowCount() > 0;
@@ -129,7 +106,7 @@ class Crud
             $sql .= " WHERE $where";
         }
 
-        $stmt = $this->conn->prepare($sql);
+        $stmt = $this->con->prepare($sql);
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC); // Use fetchAll to get the result as an array
