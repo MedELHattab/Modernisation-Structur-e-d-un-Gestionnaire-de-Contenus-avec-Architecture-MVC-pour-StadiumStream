@@ -30,15 +30,15 @@ class TeamController extends Controller
     {
         if ($_SERVER["REQUEST_METHOD"] == 'POST') {
 
-            $name = $_POST['name'] ;
+            $name = $_POST['Name'] ;
 
-            $description = $_POST['description'] ;
+            $coach = $_POST['Coach'] ;
 
-            $country = $_POST['country'] ;
+            $number = $_POST['Number'] ;
 
             $team = new TeamModel();
 
-            $res = $team->addTeam($name, $description, $country);
+            $res = $team->addTeam($name, $coach, $number);
 
 
             if ($res) {
@@ -64,18 +64,18 @@ class TeamController extends Controller
     public function updateteam(){
         if ($_SERVER["REQUEST_METHOD"] == 'POST') {
 
-            $name = $_POST['name'] ;
+            $name = $_POST['Name'] ;
 
-            $description = $_POST['description'] ;
+            $coach = $_POST['Coach'] ;
 
-            $country = $_POST['country'] ;
+            $number = $_POST['Number'] ;
 
             $id = $_POST['id']+0 ;
 
             $team = new TeamModel();
                
 
-            $res = $team->updateTeam($name, $description, $country,$id);
+            $res = $team->updateTeam($name, $coach, $number,$id);
  
              
             if ($res) {

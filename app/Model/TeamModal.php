@@ -17,18 +17,18 @@ class TeamModel
     public function addTeam(
         string $name
         ,
-        string $description
+        int $number
         ,
-        string $country
+        string $coach
 
     ): bool {
         try {
-            $team = new Team(0, $this->input($name), $this->input($description), $this->input($country), null);
+            $team = new Team(0, $this->input($name), $this->input($number), $this->input($coach),);
 
             $res = $this->con->insert(
 
                 "teams",
-                ["name" => $team->getName(), "description" => $team->getDescription(), "country" => $team->getCountry()]
+                ["Name" => $team->getName(), "Number" => $team->getNumber(), "Coach" => $team->getCoach()]
 
             );
 
@@ -50,7 +50,7 @@ class TeamModel
             $res = $this->con->selectAll("teams");
 
             foreach ($res as $r) {
-                $team = new Team($r['id'], $r['name'], $r['country'], $r['description'], $r['created_at']);
+                $team = new Team($r['id'], $r['Name'], $r['Coach'], $r['Number']);
                 array_push($this->teams, $team);
             }
             return $this->teams;
@@ -64,7 +64,7 @@ class TeamModel
 
             $res = $this->con->selectOne("teams", $id);
 
-            $team = new Team($res['id'], $res['name'], $res['country'], $res['description'], $res['created_at']);
+            $team = new Team($res['id'], $res['Name'], $res['Coach'], $res['Number']);
 
             return $team;
 
@@ -89,14 +89,14 @@ class TeamModel
     public function updateTeam(
         string $name
         ,
-        string $description
+        int $number
         ,
-        string $country
+        string $coach
         ,
         int $id
     ) {
         try {
-            $res = $this->con->update("teams", ["name" => $this->input($name), "description" => $this->input($description), "country" => $this->input($country)], $id);
+            $res = $this->con->update("teams", ["Name" => $this->input($name), "Number" => $this->input($number), "Coach" => $this->input($coach)], $id);
             return $res;
         } catch (PDOException $e) {
             echo $e->getMessage();

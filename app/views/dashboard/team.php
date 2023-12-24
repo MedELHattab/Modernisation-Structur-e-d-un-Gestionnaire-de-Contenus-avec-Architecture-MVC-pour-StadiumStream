@@ -151,45 +151,26 @@ include("../../.././vendor/autoload.php");
             </tr>
           </thead>
           <tbody>
-            <?php
-           
-           foreach($result as $res):  ?>
-                ?>
-                <tr>
-                  <td>
-                    <?php  ?>
-                  </td>
-                  <td>
-                    <?php  ?>
-                  </td>
-                  <td>
-                    <?php  ?>
-                  </td>
-                  <td>
-                    <?php  ?>
-                  </td>
-                  <td>
-                    <?php  ?>
-                  </td>
-                  <td>
-                    <?php  ?>
-                  </td>
-                  <td>
-                    <?php  ?>
-                  </td>
-                  <td>
-                    <a href="#" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#updateUserModal">
-                      Update
-                    </a>
-                  </td>
-                  <td>
-                    <a href="#" class="btn btn-danger">Delete</a>
-                  </td>
-                </tr>
-                <?php
-              
-            ?>
-          </tbody>
+    <?php foreach ($result as $res): ?>
+        <tr>
+            <td><?= $res->getName() ?></td>
+            <td><?= $res->getCoach() ?></td>
+            <td><?= $res->getNumber() ?></td>
+            <td>
+                <a href="team/view/<?= $res->getId() ?>" class="view" title="View" data-toggle="tooltip">
+                    <i class="material-icons">&#xE417;</i>view
+                </a>
+                <a href="team/edit/<?= $res->getId() ?>" class="edit" title="Edit" data-toggle="tooltip">
+                    <i class="material-icons">&#xE254;</i>edit
+                </a>
+                <a href="team/destroy/<?= $res->getId() ?>" class="delete" title="Delete" data-toggle="tooltip"
+                    onclick="return confirm('Do you really want to Delete ?');">
+                    <i class="material-icons">&#xE872;</i>delete
+                </a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+</tbody>
         </table>
       </section>
       <script src="../../.././public/assets/js/dashboard.js"></script>

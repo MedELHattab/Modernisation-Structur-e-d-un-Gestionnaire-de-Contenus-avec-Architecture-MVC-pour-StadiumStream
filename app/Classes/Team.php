@@ -3,17 +3,15 @@
      class Team {
         private ?int $id;
         private ?string $name;
-        private ?string $country;
-        private ?string $description;
-        private ?string $created_at;
+        private ?string $coach;
+        private ?int $number;
 
 
-        public function __construct(?int $id = null, ?string $name = null, ?string $description = null, ?string $country = null , ?string $created_at = null) {
+        public function __construct(?int $id = null, ?string $name = null, ?string $coach = null, ?int $number = null) {
             $this->id = $id;
             $this->name = $name;
-            $this->country = $country;
-            $this->description = $description;
-            $this->created_at = $created_at;
+            $this->coach = $coach;
+            $this->number = $number;
         }
 
         public function getId(): ?int {
@@ -32,28 +30,20 @@
         public function setName(?string $name): void {
             $this->name = $name;
         }
-        public function getCountry(): ?string {
-            return $this->country;
+        public function getCoach(): ?string {
+            return $this->coach;
         }
     
-        public function setCountry(?string $country): void {
-            $this->country = $country;
+        public function setCoach(?string $coach): void {
+            $this->coach = $coach;
         }
     
-        public function getCreatedAt(): ?string {
-            return $this->created_at;
+        public function getNumber(): ?int {
+            return $this->number;
         }
     
-        public function setCreatedAt(?string $created_at): void {
-            $this->created_at = $created_at;
-        }
-    
-        public function getDescription(): ?string {
-            return $this->description;
-        }
-    
-        public function setDescription(?string $description): void {
-            $this->description = $description;
+        public function setNumber(?int $number): void {
+            $this->number = $number;
         }
     }
     
