@@ -1,11 +1,11 @@
 <?php
 
-namespace MVC;
+   namespace App\Controller;
+   Class Controller{
+    public function render($nameFolder,$nameFile,$title,$result){
 
-class Controller {
-    protected function render($view, $data = []) {
-        extract($data);
+          include "../app/View/".$nameFolder."/".$nameFile.".php";
+          include '../app/View/include/layout.php';
 
-        include "Views/$view.php";
     }
-}
+   }
