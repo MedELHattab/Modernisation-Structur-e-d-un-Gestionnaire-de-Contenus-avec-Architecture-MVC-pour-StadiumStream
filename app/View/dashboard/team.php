@@ -117,7 +117,7 @@
 
 
       <section class="Agents px-4">
-        <button type="button" class="btn btn-primary my-2" data-bs-toggle="modal"
+        <a href="team/addteam" type="button" class="btn btn-primary my-2" data-bs-toggle="modal"
           data-bs-target="#exampleModalCenter1">Add user</button>
 
         <!-- Add Update User Modal -->
@@ -155,9 +155,6 @@
             <td><?= $res->getCoach() ?></td>
             <td><?= $res->getNumber() ?></td>
             <td>
-                <a href="team/view/<?= $res->getId() ?>" class="view" title="View" data-toggle="tooltip">
-                    <i class="material-icons">&#xE417;</i>view
-                </a>
                 <a href="team/edit/<?= $res->getId() ?>" class="edit" title="Edit" data-toggle="tooltip">
                     <i class="material-icons">&#xE254;</i>edit
                 </a>
