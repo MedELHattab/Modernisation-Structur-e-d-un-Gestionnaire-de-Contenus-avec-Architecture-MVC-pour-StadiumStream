@@ -15,14 +15,14 @@ class TeamController extends Controller
 
         $result = $teams->allTeams();
 
-        $this->render("team", "listeTeam", "liste of teams", $result);
+        $this->render("dashboard", "team", "liste of teams", $result);
 
     }
 
     public function addteam()
     {                           
        
-        $this->render("team", "create", "Add Users", null);
+        $this->render("dashboard", "creat", "Add Users", null);
 
     }
 

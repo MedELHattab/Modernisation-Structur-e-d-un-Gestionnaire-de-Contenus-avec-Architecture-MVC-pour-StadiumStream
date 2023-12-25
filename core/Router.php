@@ -35,7 +35,7 @@ class Router
                 $this->controller = $controller;
                 
             } else {
-                include '../app/View/404/template_01.php';
+                // include '../app/View/404/template_01.php';
                 die();
             }
         }

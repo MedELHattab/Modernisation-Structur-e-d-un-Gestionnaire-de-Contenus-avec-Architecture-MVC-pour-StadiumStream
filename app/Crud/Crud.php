@@ -2,7 +2,7 @@
      namespace App\Crud;
      use \PDOException;
      use \PDO;
-     require("../../config/config.php");
+     require("../app/config/config.php");
      class Crud {
         private $db_database_connect;
     
