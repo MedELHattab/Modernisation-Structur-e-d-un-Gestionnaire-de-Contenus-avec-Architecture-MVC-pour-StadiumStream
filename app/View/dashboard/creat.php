@@ -1,7 +1,7 @@
 
 <div class="signup-form">
 
-    <form action="<?= $result ?   './updateteam'  : './insertteam' ?>" method="post">
+    <form action="<?= $result ?   './updateTeam'  : './insertTeam' ?>" method="post">
 
 		<h2><?=$title?></h2>
 

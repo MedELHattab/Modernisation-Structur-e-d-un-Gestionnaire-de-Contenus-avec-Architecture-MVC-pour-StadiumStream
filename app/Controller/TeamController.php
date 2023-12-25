@@ -26,7 +26,7 @@ class TeamController extends Controller
 
     }
 
-    public function insertteam()
+    public function insertTeam()
     {
         if ($_SERVER["REQUEST_METHOD"] == 'POST') {
 
@@ -56,12 +56,8 @@ class TeamController extends Controller
         }
     }
 
-    public function edit(int $id){
-        $team = new TeamModel();
-        $result = $team->oneTeam($id);
-        $this->render("team", "create", "Edit Users",$result);
-    }
-    public function updateteam(){
+ 
+    public function updateTeam(){
         if ($_SERVER["REQUEST_METHOD"] == 'POST') {
 
             $name = $_POST['Name'] ;
@@ -92,11 +88,7 @@ class TeamController extends Controller
             echo "Invalid request method.";
         }
     }
-    public function view($id){
-        $team = new TeamModel();
-        $result = $team->oneTeam($id);
-        $this->render("team", "read", "Read User",$result);
-    }
+
     public function destroy($id){
         $team =  new TeamModel();
         $res =  $team->deleteTeam($id);
