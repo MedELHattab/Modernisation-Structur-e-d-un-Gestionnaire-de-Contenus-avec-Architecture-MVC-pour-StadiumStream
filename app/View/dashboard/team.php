@@ -155,7 +155,7 @@
             <td><?= $res->getCoach() ?></td>
             <td><?= $res->getNumber() ?></td>
             <td>
-                <a href="team/edit/<?= $res->getId() ?>" class="edit" title="Edit" data-toggle="tooltip">
+                <a href="team/edit/<?=$res->getId()?>" class="edit" title="Edit" data-toggle="tooltip">
                     <i class="material-icons">&#xE254;</i>edit
                 </a>
                 <a href="team/destroy/<?= $res->getId() ?>" class="delete" title="Delete" data-toggle="tooltip"

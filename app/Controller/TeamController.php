@@ -22,7 +22,7 @@ class TeamController extends Controller
     public function addteam()
     {                           
        
-        $this->render("dashboard", "creat", "Add Users", null);
+        $this->render("dashboard", "creat", "Add Team", null);
 
     }
 
@@ -34,11 +34,11 @@ class TeamController extends Controller
 
             $coach = $_POST['Coach'] ;
 
-            $number = $_POST['Number'] ;
+            $number = $_POST['Number']+0 ;
 
             $team = new TeamModel();
-
-            $res = $team->addTeam($name, $coach, $number);
+         
+            $res = $team->addTeam($name, $number, $coach);
 
 
             if ($res) {
@@ -55,7 +55,12 @@ class TeamController extends Controller
             echo "Invalid request method.";
         }
     }
-
+    public function edit(int $id){
+        $team = new TeamModel();
+        $id+=0;
+        $result = $team->oneTeam($id);
+        $this->render("dashboard", "creat", "Edit Users",$result);
+    }
  
     public function updateTeam(){
         if ($_SERVER["REQUEST_METHOD"] == 'POST') {
@@ -64,14 +69,14 @@ class TeamController extends Controller
 
             $coach = $_POST['Coach'] ;
 
-            $number = $_POST['Number'] ;
+            $number = $_POST['Number'] +0 ;
 
             $id = $_POST['id']+0 ;
 
             $team = new TeamModel();
                
 
-            $res = $team->updateTeam($name, $coach, $number,$id);
+            $res = $team->updateTeam($name, $number, $coach,$id);
  
              
             if ($res) {

@@ -1,7 +1,7 @@
 
 <div class="signup-form">
 
-    <form action="<?= $result ?   './updateTeam'  : './insertTeam' ?>" method="post">
+    <form action="<?= $result ?   '../updateTeam'  : './insertTeam' ?>" method="post">
 
 		<h2><?=$title?></h2>
 
@@ -16,7 +16,7 @@
         </div>
 		
 		<div class="form-group">
-            <textarea class="form-control" name="Number" placeholder="Enter the team number" required="true"><?= $result ? $result->getNumber() : ''  ?></textarea>
+        <input type="test" value="<?= $result ? $result->getNumber() : ''  ?>" class="form-control" name="Number" placeholder="Enter the team number" required="true">
         </div>
 		<input type="hidden" name="id" value="<?= $result ? $result->getId() : ''?>" >
       
@@ -26,7 +26,5 @@
 
     </form>
 
-	<div class="text-center">View Allready Inserted Data!!  <a href="../../">View</a></div>
-    
 </div>
 

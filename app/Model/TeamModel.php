@@ -23,7 +23,9 @@ class TeamModel
 
     ): bool {
         try {
-            $team = new Team(0, $this->input($name), $this->input($number), $this->input($coach),);
+            $team = new Team(0, $this->input($name), $this->input($coach), $this->input($number));
+           
+          
 
             $res = $this->con->insert(
 
@@ -61,7 +63,7 @@ class TeamModel
     public function oneTeam(int $id)
     {
         try {
-
+                 $id+=0;
             $res = $this->con->selectOne("teams", $id);
 
             $team = new Team($res['id'], $res['Name'], $res['Coach'], $res['Number']);
